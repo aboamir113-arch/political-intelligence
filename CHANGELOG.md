@@ -1,5 +1,18 @@
 # CHANGELOG — Political Intelligence Desk
 
+## [v0.8.3] - Automated Android CI Workflow
+
+### Added
+- **GitHub Actions Workflow (`.github/workflows/android.yml`)**:
+  - Automated CI pipeline to build the Android debug APK (`app-debug.apk`) on pushes and pull requests to `main` and `master`, plus manual execution via `workflow_dispatch`.
+  - Configures JDK 17 with Temurin distribution and Gradle via `gradle/actions/setup-gradle@v4`.
+  - Automatically recovers and decodes `debug.keystore` from `debug.keystore.base64` if absent on the clean runner.
+  - Ensures `.env` exists from `.env.example` to satisfy Secrets Gradle Plugin configuration.
+  - Generates Gradle wrapper if not present and executes `assembleDebug`.
+  - Uploads the resulting `app-debug.apk` as a downloadable GitHub Actions artifact.
+
+---
+
 ## [v0.8.2] - Analyst Management in Admin Desk
 
 ### Added
