@@ -1,0 +1,6 @@
+{
+  "name": "Political Intelligence Desk",
+  "description": "Mobile-first political intelligence desk for analysts with source tracking, narrative analysis, and dossier monitoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
