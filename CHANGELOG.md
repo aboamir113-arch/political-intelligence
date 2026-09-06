@@ -6,7 +6,8 @@
 - **GitHub Actions Workflow (`.github/workflows/android.yml`)**:
   - Automated CI pipeline to build the Android debug APK (`app-debug.apk`) on pushes and pull requests to `main` and `master`, plus manual execution via `workflow_dispatch`.
   - Configures JDK 17 with Temurin distribution and Gradle via `gradle/actions/setup-gradle@v4`.
-  - Automatically recovers and decodes `debug.keystore` from `debug.keystore.base64` if absent on the clean runner.
+  - Automatically generates a valid `debug.keystore` using `keytool` (`-alias androiddebugkey -storepass android -keypass android`) at the root directory and in `~/.android/`, resolving the `Keystore file not found for signing config debugConfig` error on clean runners.
+  - Recovers and decodes `debug.keystore` from `debug.keystore.base64` if present.
   - Ensures `.env` exists from `.env.example` to satisfy Secrets Gradle Plugin configuration.
   - Generates Gradle wrapper if not present and executes `assembleDebug`.
   - Uploads the resulting `app-debug.apk` as a downloadable GitHub Actions artifact.
